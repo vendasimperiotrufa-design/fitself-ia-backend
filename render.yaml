@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: fitself-ia-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_MODEL
+        value: gpt-5.4-mini
+      - key: FRONTEND_ORIGIN
+        value: "*"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: USERS_JSON
+        sync: false
